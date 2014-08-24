@@ -15,7 +15,9 @@ public class Main {
         Invocable invocable = (Invocable) engine;
         Validator validator = invocable.getInterface(Validator.class);
         System.out.println("Validator requires the input is a number greater than 10");
-        System.out.println("Validating value of 5: " + validator.validate("5"));
-        System.out.println("Validating value of 15: " + validator.validate("15"));
+        System.out.println("Validating value of 5: " + validator.validate(5));
+        System.out.println("Validating value of 15: " + validator .validate(15));
+        System.out.println("Validating value of ahmed: " + validator.validate("ahmed"));
+        System.out.println("Validating value of `true`: " + validator.validate(true));
     }
 }

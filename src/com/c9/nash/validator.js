@@ -1,1 +1,3 @@
-function validate(value) { return parseInt(value) > 10 }
+function validate(value) {
+ return parseInt(value) > 10
+ }
