@@ -8,16 +8,14 @@ import java.io.FileReader;
 public class Main {
 
     public static void main(String[] args) throws Throwable {
-        System.out.println("Ahmed");
+        System.out.println("Starting validation process...");
         ScriptEngineManager engineManager = new ScriptEngineManager();
         ScriptEngine engine = engineManager.getEngineByName("nashorn");
-        engine.eval("function sum(a, b) { return a + b; }");
-        System.out.println(engine.eval("sum(1, 2);"));
+        engine.eval(new FileReader("src/com/c9/nash/validator.js"));
         Invocable invocable = (Invocable) engine;
-        System.out.println(invocable.invokeFunction("sum", 4, 5));
-        Adder adder = invocable.getInterface(Adder.class);
-        System.out.println(adder.sum(9, 9));
-        engine.eval(new FileReader("src/com/c9/nash/dir.js"));
-        System.out.println(invocable.invokeFunction("sum", 5, 7));
+        Validator validator = invocable.getInterface(Validator.class);
+        System.out.println("Validator requires the input is a number greater than 10");
+        System.out.println("Validating value of 5: " + validator.validate("5"));
+        System.out.println("Validating value of 15: " + validator.validate("15"));
     }
 }
