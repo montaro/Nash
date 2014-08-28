@@ -3,5 +3,4 @@ function kill() {
     file.append("Ahmed");
     file.flush();
 }
-print("a7mad")
 kill()
